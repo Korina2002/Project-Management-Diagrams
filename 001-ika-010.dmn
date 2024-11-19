@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_1cbw7m1" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.4.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <decision id="Decision_07m83ho" name="University Decision" />
+  <inputData id="InputData_10dddxo" name="Επιθυμιτά χρόνια φοίτησης" />
+  <inputData id="InputData_165bgfm" name="κλάδος" />
+  <inputData id="InputData_1mxi3m0" name="Τόπος διαμονής" />
+  <knowledgeSource id="KnowledgeSource_0y2acb4" name="Πίνακας προσφερόμενων μαθημάτων" />
+  <decision id="Decision_1m2nt8l" name="Πανεπιστήμιο">
+    <informationRequirement id="InformationRequirement_1a47z7h">
+      <requiredInput href="#InputData_165bgfm" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0t6978t">
+      <requiredInput href="#InputData_1mxi3m0" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1l8zxdb">
+      <input id="InputClause_04n35vx" label="Κλαδος">
+        <inputExpression id="LiteralExpression_0cwtm8i" typeRef="string" />
+      </input>
+      <input id="InputClause_0xwd463" label="Τόπος διαμονής">
+        <inputExpression id="LiteralExpression_18ztvct" typeRef="string">
+          <text>or
+</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_034k5gd" label="Πανεπιστήμιο" typeRef="string" />
+      <rule id="DecisionRule_19z8w8l">
+        <inputEntry id="UnaryTests_11yl436">
+          <text>Θεωρητική</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rec4zx">
+          <text>Αττική</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pzikz0">
+          <text>Πανεπιστήμιο Αττικής</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1dw6t4i">
+        <inputEntry id="UnaryTests_0xh2g6t">
+          <text>Οικονομικά</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ryt3k4">
+          <text>Αττική</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pd6qhz">
+          <text>Πανεπιστήμιο Πειραιά</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1luzxzz">
+        <inputEntry id="UnaryTests_1q1m9ai">
+          <text>Οικονομικά</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mhx26c">
+          <text>Θεσσαλονίκη</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15vlbwg">
+          <text>Πανεπιστήμιο Μακεδονίας</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bocoo0">
+        <inputEntry id="UnaryTests_0f3wqqq">
+          <text>Πολυτεχνείο</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ydnreu">
+          <text>Θεσσαλονίκη</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06ot4i7">
+          <text>Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1uix56t">
+        <inputEntry id="UnaryTests_0efr1df">
+          <text>Θεωρητική</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1c4tnuc">
+          <text>Θεσσαλονίκη</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16gbblf">
+          <text>Αριστοτέλειο Πανεπιστήμιο</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04ou0b7">
+        <inputEntry id="UnaryTests_1nxarw1">
+          <text>Πολυτεχνείο</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ejyill">
+          <text>Κρήτη</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uck4po">
+          <text>Πανεπιστήμιο Ρεθύμνου</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0stnlsh">
+        <inputEntry id="UnaryTests_1wi6bb0">
+          <text>Πολυτεχνείο</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17xei02">
+          <text>Ξάνθη </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qozfpz">
+          <text>Πανεπιστήμιο Ξάνθης</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_108ld3y" name="Σχολή">
+    <informationRequirement id="InformationRequirement_0foxkym">
+      <requiredDecision href="#Decision_1m2nt8l" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1nc2sar">
+      <requiredInput href="#InputData_10dddxo" />
+    </informationRequirement>
+    <authorityRequirement id="AuthorityRequirement_0adeku4">
+      <requiredAuthority href="#KnowledgeSource_0y2acb4" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_0w4a4gh" hitPolicy="COLLECT">
+      <input id="InputClause_1r1tub3" label="Πανεπιστήμιο">
+        <inputExpression id="LiteralExpression_0qzluw0" typeRef="string" />
+      </input>
+      <input id="InputClause_0h5e9bq" label="Επιθυμιτά χρόνια φοίτησης">
+        <inputExpression id="LiteralExpression_15umifn" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_08lesi3" label="Σχολή" typeRef="string" />
+      <rule id="DecisionRule_1cmn8un">
+        <inputEntry id="UnaryTests_1lyxh47">
+          <text>Πανεπιστήμιο Μακεδονίας</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cod9cc">
+          <text>&gt;=4</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dq8i7c">
+          <text> "Εφαρμοσμένης Πληροφορικής"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0151a1u">
+        <inputEntry id="UnaryTests_09m1lwa">
+          <text>Πανεπιστήμιο Μακεδονίας</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17x4ij3">
+          <text>&gt;=3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17u4550">
+          <text>"Διοίκησης Επιχειρήσεων "</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xjrcmb">
+        <inputEntry id="UnaryTests_0zegp9v">
+          <text>Αριστοτέλειο Πανεπιστήμιο </text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xfof5v">
+          <text>&gt;=4</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00k48f0">
+          <text> "Πληροφορικής"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02a1i19">
+        <inputEntry id="UnaryTests_1tm9t10">
+          <text>Αριστοτέλειο Πανεπιστήμιο </text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f3foh4">
+          <text>&gt;=5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18v88es">
+          <text>"Ηλεκτρολόγων μηχανικών"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0giz1v4">
+        <inputEntry id="UnaryTests_1xaqna3">
+          <text>Πανεπιστήμιο Αττικής</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cxrzpd">
+          <text>&gt;=5 </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0oqu0x6">
+          <text>"Μηχανολόγων Μηχανικών"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1u4255f">
+        <inputEntry id="UnaryTests_0ipembp">
+          <text>Πανεπιστήμιο Αττικής</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1uann3m">
+          <text>&gt;=4 </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qkw09z">
+          <text>"Οικονομικών επιστημών "</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0d7nktt">
+        <inputEntry id="UnaryTests_19pwmzi">
+          <text>Πανεπιστήμιο Αττικής</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1d4xxes">
+          <text>&gt;=4</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03okkpu">
+          <text>"Νομική"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1sroagi">
+        <inputEntry id="UnaryTests_0z3ds0m">
+          <text>Πανεπιστήμιο Πειραιά</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0r6fqd7">
+          <text>&gt;=4 </text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02fnohb">
+          <text>"Οικονομικών επιστημών "</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0asrya6">
+        <inputEntry id="UnaryTests_1f1uc4u">
+          <text>Πανεπιστήμιο Ξάνθης</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0m2w7xe">
+          <text>&gt;=4</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13e0bb9">
+          <text>"Πληροφορικής"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01rr62d">
+        <inputEntry id="UnaryTests_0pzpv2o">
+          <text>Πανεπιστήμιο Ξάνθης</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19gxbax">
+          <text>&gt;=5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07bqjzy">
+          <text>"Αρχιτεκτονικής"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07xixrm">
+        <inputEntry id="UnaryTests_18urn22">
+          <text>Πανεπιστήμιο Κρήτης</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jdyguu">
+          <text>&gt;=4</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0lr1jjw">
+          <text>"Μηχανολόγων πληροφορικής και διοίκησης"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00ke86o">
+        <inputEntry id="UnaryTests_1kb34ip">
+          <text>Πανεπιστήμιο Κρήτης</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qpdpmm">
+          <text>&gt;=5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_173ng20">
+          <text>"Μηχανολόγων μηχανικών"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape id="DMNShape_1dqqnuz" dmnElementRef="Decision_07m83ho">
+        <dc:Bounds height="80" width="180" x="160" y="90" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1hbhwrz" dmnElementRef="InformationRequirement_0foxkym">
+        <di:waypoint x="470" y="340" />
+        <di:waypoint x="670" y="210" />
+        <di:waypoint x="670" y="190" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_09d6ojg" dmnElementRef="InputData_10dddxo">
+        <dc:Bounds height="45" width="125" x="747" y="287" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_17v6ovy" dmnElementRef="InformationRequirement_1nc2sar">
+        <di:waypoint x="810" y="287" />
+        <di:waypoint x="730" y="210" />
+        <di:waypoint x="730" y="190" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0yo56ks" dmnElementRef="InputData_165bgfm">
+        <dc:Bounds height="45" width="125" x="247" y="547" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0wv8qpw" dmnElementRef="InformationRequirement_1a47z7h">
+        <di:waypoint x="310" y="547" />
+        <di:waypoint x="440" y="440" />
+        <di:waypoint x="440" y="420" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0o2fv9v" dmnElementRef="InputData_1mxi3m0">
+        <dc:Bounds height="45" width="125" x="517" y="527" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0qvtwi9" dmnElementRef="InformationRequirement_0t6978t">
+        <di:waypoint x="580" y="527" />
+        <di:waypoint x="500" y="440" />
+        <di:waypoint x="500" y="420" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_11n2mqz" dmnElementRef="KnowledgeSource_0y2acb4">
+        <dc:Bounds height="63" width="100" x="410" y="118" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0j74cd7" dmnElementRef="AuthorityRequirement_0adeku4">
+        <di:waypoint x="510" y="150" />
+        <di:waypoint x="610" y="150" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1l7cle0" dmnElementRef="Decision_1m2nt8l">
+        <dc:Bounds height="80" width="180" x="380" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0x82p8s" dmnElementRef="Decision_108ld3y">
+        <dc:Bounds height="80" width="180" x="610" y="110" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
